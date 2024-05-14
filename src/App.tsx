@@ -1,9 +1,21 @@
-import './App.module.css'
+import { Header } from './components/Header';
+import { Input } from './components/Input';
+
+import styles from './App.module.css'
+import "./global.css";
 
 export function App() {
   return (
-    <>
-      <h1>Teste</h1>
-    </>
+    <main>
+      <Header />
+
+      <section className={styles.content}>
+        <div>
+          <Input/>
+        </div>
+      </section>
+    </main>
+
+
   )
 }
