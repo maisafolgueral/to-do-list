@@ -1,0 +1,14 @@
+.button {
+  background-color: var(--blue-dark);
+  color: var(--gray-100);
+
+  width: 5.625rem;
+  font-weight: bold;
+
+  border-radius: 8px;
+  border: 1px solid var(--blue-dark);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
