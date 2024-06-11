@@ -5,10 +5,21 @@
   width: 5.625rem;
   font-weight: bold;
 
+  border: 0;
   border-radius: 8px;
-  border: 1px solid var(--blue-dark);
+  gap: 0.5rem;
+  box-shadow: none;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  height: 3.25rem;
+  padding: 1rem;
+
+  line-height: 140%;
+  font-weight: bold;
+  font-size: 0.875rem;
+
+  transition: 0.2s;
 }
