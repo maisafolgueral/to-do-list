@@ -2,7 +2,8 @@ import { Header } from "./components/Header";
 import { Input } from "./components/Input";
 import { Button } from "./components/Button";
 import { Empty } from "./components/List/Empty";
-import { ListHeader } from "./components/List/ListHeader";
+import { ListHeader } from "./components/List/ListHeader"
+import { Item } from "./components/List/Item";
 
 import { useState } from "react";
 import { PlusCircle } from "phosphor-react";
@@ -42,6 +43,28 @@ export function App() {
     setInputValue('')
   }
 
+  function handleRemoveTask(id: number) {
+    const filteredTasks = tasks.filter((task) => task.id !== id)
+
+    if(!confirm('Deseja mesmo apagar essa tarefa?')) {
+      return
+    }
+
+    setTasks(filteredTasks)
+  }
+
+  function handleToggleTask({ id, value }: {id: number; value: boolean}) {
+    const updatedTasks = tasks.map((task) => {
+      if(task.id === id) {
+        return { ...task, isChecked: value }
+      }
+
+      return { ...task }
+    })
+
+    setTasks(updatedTasks)
+  }
+
   return (
     <main>
       <Header />
@@ -64,7 +87,21 @@ export function App() {
             checkedTasksCounter={checkedTasksCounter}
           />
 
-          <Empty/>
+          {tasks.length > 0 ? (
+            <div>
+              {tasks.map((task) => (
+                <Item
+                  key={task.id}
+                  data={task}
+                  removeTask={handleRemoveTask}
+                  toggleTaskStatus={handleToggleTask}
+                />
+              ))}
+            </div>
+          ) : (
+            <Empty />
+          )}
+
         </div>
       </section>
     </main>
